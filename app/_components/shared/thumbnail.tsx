@@ -25,6 +25,20 @@ export function ThumbnailImage({
         <Link
         className="relative flex h-[72px] w-[137px] shrink-0 rounded-md border object-cover"
         href={`/preview/${document}`}
-        target="_blank"></Link>
+        target="_blank">
+            <Image
+            alt = {document_id}
+            onError = {setError}
+            src = {error || !src ? "/image/noimage_thumbnail.png" : src}
+            //fill = {true}
+            height = {72}
+            width = {137}
+            style={{borderRadius : "6px"}}
+            />
+
+            <div className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-md bg-shade-disabled opacity-0 transition-opacity duration-200 hover:opacity-50">
+                <EyeIcon className="h-6 w-6 text-shade-pencil-black" />
+            </div>
+        </Link>
     )
 }
